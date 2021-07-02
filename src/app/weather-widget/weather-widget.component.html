@@ -1,0 +1,28 @@
+<div id="divWeatherMain">
+  <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
+      <i class="fas fa-3x fa-sun sun"></i>
+  </div>
+  <div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
+      <i class="fas fa-3x fa-moon moon"></i>
+  </div>
+  <div *ngIf="WeatherData.weather[0].main == 'Clouds'" class="weatherWidgetRow cloudDiv">
+      <i class="fas fa-cloud fa-3x cloud"></i>
+  </div>
+  <div *ngIf="WeatherData.weather[0].main == 'Rain'" class="weatherWidgetRow cloudDiv">
+    <i class="fas fa-cloud-showers-heavy fa-3x cloud"></i>
+  </div>
+  <div *ngIf="WeatherData.weather[0].main == 'Drizzle'" class="weatherWidgetRow cloudDiv">
+    <i class="fas fa-cloud-rain fa-3x cloud"></i>
+  </div>
+  <div *ngIf="WeatherData.weather[0].main == 'Snow'" class="weatherWidgetRow cloudDiv">
+    <i class="far fa-snowflake fa-3x cloud"></i>
+  </div>
+  <!-- <div *ngIf="WeatherData.weather[0].main == 'Fog'" class="weatherWidgetRow cloudDiv">
+      <i class="fas fa-smog fa-3x cloud"></i>
+  </div> -->
+  <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{WeatherData.temp_celcius}}°</div>
+  <div class="weatherWidgetRow" style="font-size: 20px;">{{WeatherData.weather[0].description}}</div>
+  <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{WeatherData.temp_feels_like}}°</div>
+  <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{WeatherData.name}}</div>
+  <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{WeatherData.main.humidity}}%</div>
+</div>

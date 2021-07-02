@@ -1,0 +1,27 @@
+@import "../../colors.scss";
+
+:host {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: $background;
+  flex-direction: column;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 1em 0em;
+  background-color: $background;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  font-family: montserrat;
+}
