@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-history',
@@ -30,9 +31,15 @@ export class HistoryComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  private cars: Array<object>;
+  response;
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.apiService.cars$.subscribe((carsArray) => {
+      this.cars = carsArray;
+    });
+    this.apiService.queryAllCars();
   }
 
 }
