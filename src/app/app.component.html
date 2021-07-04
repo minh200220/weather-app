@@ -4,10 +4,15 @@
   <label for="check" class="checkbtn">
     <i class="fas fa-bars"></i>
   </label>
-  <label class="logo">WeatherIoT</label>
+  <label class="logo">WeatherIoT
+  </label>
+
   <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/history">History</a></li>
+    <li><div>
+      <app-button></app-button>
+    </div></li>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/history">History</a></li>
   </ul>
 </nav>
 <router-outlet></router-outlet>

@@ -1,5 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 
+import { ApiService } from '../api.service';
+
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
@@ -9,9 +11,8 @@ export class ButtonComponent implements OnInit {
   isOn = false;
   timeVal;
   WeatherData:any;
-  // @Output() btnClick = new EventEmitter()
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
   }
@@ -31,14 +32,19 @@ export class ButtonComponent implements OnInit {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=can+tho&appid=35ef234ddb5c4561bbc2559ae6bd54d2&units=metric`)
     .then(response=>response.json())
     .then(data=>{
-      this.WeatherData = data;
-      console.log({
-        temp: this.WeatherData.main.temp.toFixed(0) ,
-        humidity: this.WeatherData.main.humidity,
-        time: dateTime
-      })})
+      this.WeatherData = {
+        color: '15sd61c5sd64c6s5dv4fe89bv134s849sd64cs56dc89s4d8',
+        make: data.main.temp.toFixed(0),
+        model: data.main.humidity,
+        owner: dateTime
+      };
+      this.onSubmit(this.WeatherData);
+    })
   }
 
+  async onSubmit(data) {
+    return this.apiService.createCar(data.color, data.make, data.model, data.owner);
+  }
 
   onClick() {
     if (this.isOn) {
@@ -48,7 +54,7 @@ export class ButtonComponent implements OnInit {
       this.isOn = !this.isOn;
       this.timeVal = setInterval(this.printTime, 2000);
     }
-    console.log('clicked')
+    // console.log('clicked')
   }
 
 }

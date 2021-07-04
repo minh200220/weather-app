@@ -51,6 +51,12 @@ nav ul {
   float: right;
   margin-right: 20px;
 }
+nav ul div {
+  display: inline-block;
+  line-height: 40px;
+  margin: 0 5px;
+  padding-top: 20px;
+}
 nav ul li {
   display: inline-block;
   line-height: 80px;
