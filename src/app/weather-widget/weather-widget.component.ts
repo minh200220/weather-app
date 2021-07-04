@@ -16,7 +16,7 @@ export class WeatherWidgetComponent implements OnInit {
       isDay: true
     };
     this.getWeatherData();
-    console.log(this.WeatherData);
+    // console.log(this.WeatherData);
   }
 
   getWeatherData(){

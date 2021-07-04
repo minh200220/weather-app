@@ -1,6 +1,4 @@
-<button
-  [ngStyle]="{'background-color': color}"
-  class="btn"
-  (click)="onClick()" >
-  {{ text }}
-</button>
+<label class="switch">
+  <input type="checkbox" (click)="onClick()">
+  <span class="slider round"></span>
+</label>

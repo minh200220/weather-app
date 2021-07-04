@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, Form } from '@angular/forms';
 
 import { ApiService } from '../api.service';
 

@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router'
 
 import { AppComponent } from './app.component';
-import { QueryAllCarsComponent } from './query-all-cars/query-all-cars.component';
 import { ApiService } from './api.service';
 import { CreateCarFormComponent } from './create-car-form/create-car-form.component';
 import { HistoryComponent } from './history/history.component';
@@ -21,7 +20,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    QueryAllCarsComponent,
     CreateCarFormComponent,
     HistoryComponent,
     WeatherWidgetComponent,
