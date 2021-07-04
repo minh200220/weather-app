@@ -35,7 +35,7 @@ export class ButtonComponent implements OnInit {
       this.WeatherData = {
         color: '15sd61c5sd64c6s5dv4fe89bv134s849sd64cs56dc89s4d8',
         make: data.main.temp.toFixed(0),
-        model: data.main.humidity,
+        model: data.main.humidity.toString(),
         owner: dateTime
       };
       this.onSubmit(this.WeatherData);
