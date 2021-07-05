@@ -52,7 +52,7 @@ export class ButtonComponent implements OnInit {
       })
   }
 
-  printTime() {
+  async printTime() {
     var today = new Date();
     var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -63,8 +63,9 @@ export class ButtonComponent implements OnInit {
       owner: dateTime
     };
 
-    this.onSubmit(this.WeatherData);
-    console.log(this.WeatherData);
+    return this.apiService.createCar(this.WeatherData.color, this.WeatherData.make, this.WeatherData.model, this.WeatherData.owner);
+    // this.onSubmit(this.WeatherData);
+    // console.log(this.WeatherData);
   }
 
   async onSubmit(data) {
