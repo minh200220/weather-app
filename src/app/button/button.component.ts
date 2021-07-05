@@ -15,12 +15,41 @@ export class ButtonComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    var today = new Date();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = time+' '+date;
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=can+tho&appid=35ef234ddb5c4561bbc2559ae6bd54d2&units=metric`)
+      .then(response=>response.json())
+      .then(data=>{
+        this.WeatherData = {
+          color: '15sd61c5sd64c6s5dv4fe',
+          make: data.main.temp.toFixed(0),
+          model: data.main.humidity.toString(),
+          owner: dateTime
+        };
+      })
+
+    setInterval(this.getWeatherData, 1800000)
   }
 
   getWeatherData(){
+    // var today = new Date();
+    // var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    // var dateTime = time+' '+date;
+
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=can+tho&appid=35ef234ddb5c4561bbc2559ae6bd54d2&units=metric`)
-    .then(response=>response.json())
-    .then(data=>{this.WeatherData = data; console.log(this.WeatherData)})
+      .then(response=>response.json())
+      .then(data=>{
+        this.WeatherData = {
+          color: '15sd61c5sd64c6s5dv4fe',
+          make: data.main.temp.toFixed(0),
+          model: data.main.humidity.toString(),
+          owner: 'dateTime'
+        };
+      })
   }
 
   printTime() {
@@ -29,17 +58,13 @@ export class ButtonComponent implements OnInit {
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = time+' '+date;
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=can+tho&appid=35ef234ddb5c4561bbc2559ae6bd54d2&units=metric`)
-    .then(response=>response.json())
-    .then(data=>{
-      this.WeatherData = {
-        color: '15sd61c5sd64c6s5dv4fe89bv134s849sd64cs56dc89s4d8',
-        make: data.main.temp.toFixed(0),
-        model: data.main.humidity.toString(),
-        owner: dateTime
-      };
-      this.onSubmit(this.WeatherData);
-    })
+    this.WeatherData = {
+      ...this.WeatherData,
+      owner: dateTime
+    };
+
+    this.onSubmit(this.WeatherData);
+    console.log(this.WeatherData);
   }
 
   async onSubmit(data) {
@@ -54,7 +79,7 @@ export class ButtonComponent implements OnInit {
       this.isOn = !this.isOn;
       this.timeVal = setInterval(this.printTime, 2000);
     }
-    // console.log('clicked')
+    console.log('clicked')
   }
 
 }
