@@ -20,9 +20,14 @@ body {
   margin: 1em 0em;
   background-color: $background;
   height: 100%;
-  display: flex;
+
   width: 80%;
   margin: 10px auto;
-  flex-direction: row;
+
   font-family: montserrat;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
 }

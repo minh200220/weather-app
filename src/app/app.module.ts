@@ -11,6 +11,7 @@ import { HistoryComponent } from './history/history.component';
 import { WeatherWidgetComponent } from './weather-widget/weather-widget.component';
 import { WeatherComponent } from './weather/weather.component';
 import { ButtonComponent } from './button/button.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 const appRoutes: Routes = [
   { path: '', component: WeatherComponent },
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     HistoryComponent,
     WeatherWidgetComponent,
     WeatherComponent,
-    ButtonComponent
+    ButtonComponent,
+    LineChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    ApiService
+    ApiService,
   ],
   bootstrap: [AppComponent]
 })
