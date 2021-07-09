@@ -47,7 +47,8 @@ export class ButtonComponent implements OnInit {
       owner: dateTime
     };
 
-    this.onSubmit(this.WeatherData);
+    this.apiService.createCar2(this.WeatherData.color, this.WeatherData.make, this.WeatherData.model, this.WeatherData.owner);
+    // this.onSubmit(this.WeatherData);
     console.log(this.WeatherData);
   }
 
