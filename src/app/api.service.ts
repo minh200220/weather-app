@@ -21,7 +21,12 @@ export class ApiService {
 
   public cars$: Subject<Array<object>> = new BehaviorSubject<Array<object>>([]);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
+
+  queryAllCars() {
+    return this.http.get<Array<any>>(baseURL + queryAllCarsURL, httpOptionsJson).subscribe((response) => {
+      this.cars$.next(response);
+    });
   }
 
   createCar(color: string, make: string, model: string, owner: string) {
@@ -31,7 +36,15 @@ export class ApiService {
       'color': color,
       'owner': owner
     }), {headers}).toPromise().then((result) => { this.queryAllCars(); });
+  }
 
+  createCar2(color: string, make: string, model: string, owner: string) {
+    return this.http.post(baseURL + createCarURL, ({
+      'make': make,
+      'model': model,
+      'color': color,
+      'owner': owner
+    }), {headers});
   }
 
   changeCarOwner(key: string, newOwner: string) {
@@ -39,9 +52,4 @@ export class ApiService {
     {headers}).toPromise().then((result) => { this.queryAllCars(); });
   }
 
-  queryAllCars() {
-    return this.http.get<Array<any>>(baseURL + queryAllCarsURL, httpOptionsJson).subscribe((response) => {
-      this.cars$.next(response);
-    });
-  }
 }

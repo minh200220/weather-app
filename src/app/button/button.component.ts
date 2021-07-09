@@ -15,23 +15,7 @@ export class ButtonComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    var today = new Date();
-    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = time+' '+date;
-
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=can+tho&appid=35ef234ddb5c4561bbc2559ae6bd54d2&units=metric`)
-      .then(response=>response.json())
-      .then(data=>{
-        this.WeatherData = {
-          color: '15sd61c5sd64c6s5dv4fe',
-          make: data.main.temp.toFixed(0),
-          model: data.main.humidity.toString(),
-          owner: dateTime
-        };
-      })
-
-    setInterval(this.getWeatherData, 1800000)
+    setInterval(this.getWeatherData, 60000)
   }
 
   getWeatherData(){
@@ -52,7 +36,7 @@ export class ButtonComponent implements OnInit {
       })
   }
 
-  async printTime() {
+  printTime() {
     var today = new Date();
     var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -63,13 +47,12 @@ export class ButtonComponent implements OnInit {
       owner: dateTime
     };
 
-    return this.apiService.createCar(this.WeatherData.color, this.WeatherData.make, this.WeatherData.model, this.WeatherData.owner);
-    // this.onSubmit(this.WeatherData);
-    // console.log(this.WeatherData);
+    this.onSubmit(this.WeatherData);
+    console.log(this.WeatherData);
   }
 
-  async onSubmit(data) {
-    return this.apiService.createCar(data.color, data.make, data.model, data.owner);
+  onSubmit(data) {
+    return this.apiService.createCar2(data.color, data.make, data.model, data.owner);
   }
 
   onClick() {
