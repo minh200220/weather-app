@@ -7,6 +7,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
+  searchText = '';
   private cars: Array<object>;
   response;
   constructor(private apiService: ApiService) { }

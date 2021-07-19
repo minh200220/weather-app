@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { ApiService } from './api.service';
+import { FilterPipe } from './filter.pipe'
 import { CreateCarFormComponent } from './create-car-form/create-car-form.component';
 import { HistoryComponent } from './history/history.component';
 import { WeatherWidgetComponent } from './weather-widget/weather-widget.component';
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     WeatherComponent,
     ButtonComponent,
     LineChartComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
